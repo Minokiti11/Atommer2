@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading.Tasks;
+using DG.Tweening;
 
 public class Boss1 : MonoBehaviour
 {
@@ -30,6 +30,7 @@ public class Boss1 : MonoBehaviour
     public int pattern_n;
     public int rapid_n = 5;
     public int n = 0;
+    public Vector3[] paths;
 
     [Space]
     [Header("String")]
@@ -138,7 +139,7 @@ public class Boss1 : MonoBehaviour
 
     void SetFire()
     {
-        LaunchFireBall(new Vector3 (0f, 0f, 0f), 250f);
+        LaunchFireBall(new Vector3 (0f, 0f, 0f), 270f);
         n ++;
         if (n < 5)
             Invoke("SetFire", 0.5f);
@@ -152,15 +153,22 @@ public class Boss1 : MonoBehaviour
     void RadialLaunch()
     {
         // 放射線状に発射
-        //別スクリプトから呼ぶ(RadialSet)
+        //別スクリプから呼ぶ(RadialSet.cs)
         radialSet.RadialLaunch();
-        n = 0;
     }
 
     void OrbitMove()
     {
         // 周回移動
-        Invoke("FinishAttack", 0.5f);
+        for (int num = 0; num < paths.Length; num++)
+        {
+            transform.DOMove(paths[num], 1f);
+            if (num == 5)
+            {
+                Invoke("FinishAttack", 0.5f);
+            }
+        }
+        
     }
 
     void FinishAttack()
