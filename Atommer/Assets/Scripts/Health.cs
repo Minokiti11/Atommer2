@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     public GameObject respawnPoint3;
     public GameObject respawnPoint4;
     [SerializeField, Range(0, 5)]
-    public int health = 5;
+    public float health = 5;
 
     public Image heart1;
     public Image heart2;
@@ -28,6 +28,7 @@ public class Health : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public bool isActive = true;
     public bool isSpike = true;
+
     void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
@@ -97,6 +98,11 @@ public class Health : MonoBehaviour
 
                 Invoke("ActiveColl", 5f);
             }
+        }
+
+        if (collision.gameObject.tag == "Boss")
+        {
+            health -= 0.5f;
         }
     }
 

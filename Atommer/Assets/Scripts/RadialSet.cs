@@ -45,9 +45,13 @@ public class RadialSet : MonoBehaviour {
             //リストから一つずつ各弾のRadialLaunchを取り出す
             foreach (RadialLaunch t in list)
             {
-                //RadialLaunch内のLaunchメソッド
-                t.Launch();
-                num = 0;
+                if (t != null)
+                {
+                    //RadialLaunch内のLaunchメソッド
+                    t.Launch();
+                    num = 0;
+                }
+
             }
             // リストをクリア
             list.Clear();
