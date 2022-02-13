@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     public GameObject respawnPoint4;
     [SerializeField, Range(0, 5)]
     public float health = 5;
+    public float halfHealth_num;
 
     public Image heart1;
     public Image heart2;
@@ -20,6 +21,7 @@ public class Health : MonoBehaviour
 
     public Sprite empty;
     public Sprite full;
+    public Sprite half;
 
     public float blink_time = 5f;
     public float current_time = 0f;
@@ -80,9 +82,79 @@ public class Health : MonoBehaviour
             else
             {
                 // healthは小数(0.5が含まれる)
-                for (int i = 0; i < (health / 0.5f); i++)
+                halfHealth_num = (health / 0.5f);
+                switch (health / 0.5f)
                 {
-                    
+                    case 1:
+                        heart1.sprite = half;
+                        heart2.sprite = empty;
+                        heart3.sprite = empty;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 2:
+                        heart1.sprite = full;
+                        heart2.sprite = empty;
+                        heart3.sprite = empty;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 3:
+                        heart1.sprite = full;
+                        heart2.sprite = half;
+                        heart3.sprite = empty;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 4:
+                        heart1.sprite = full;
+                        heart2.sprite = full;
+                        heart3.sprite = empty;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 5:
+                        heart1.sprite = full;
+                        heart2.sprite = full;
+                        heart3.sprite = half;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 6:
+                        heart1.sprite = full;
+                        heart2.sprite = full;
+                        heart3.sprite = full;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 7:
+                        heart1.sprite = full;
+                        heart2.sprite = full;
+                        heart3.sprite = full;
+                        heart4.sprite = half;
+                        heart5.sprite = empty;
+                        break;
+                    case 8:
+                        heart1.sprite = full;
+                        heart2.sprite = full;
+                        heart3.sprite = full;
+                        heart4.sprite = full;
+                        heart5.sprite = empty;
+                        break;
+                    case 9:
+                        heart1.sprite = full;
+                        heart2.sprite = full;
+                        heart3.sprite = full;
+                        heart4.sprite = full;
+                        heart5.sprite = half;
+                        break;
+                    case 10:
+                        heart1.sprite = full;
+                        heart2.sprite = full;
+                        heart3.sprite = full;
+                        heart4.sprite = full;
+                        heart5.sprite = full;
+                        break;
                 }
             }
         }
