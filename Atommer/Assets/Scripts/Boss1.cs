@@ -196,6 +196,7 @@ public class Boss1 : MonoBehaviour
         isFinishedAttack = true;
     }
 
+    // ダメージを受ける
     void TakeDamage(int damage)
     {
         currentHealth -= damage;

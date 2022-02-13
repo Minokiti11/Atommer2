@@ -198,7 +198,7 @@ public class Health : MonoBehaviour
             isActive = false;
             Blink();
 
-            Invoke("ActiveColl", 5f);
+            Invoke("ActiveColl", 3f);
         }
     }
 

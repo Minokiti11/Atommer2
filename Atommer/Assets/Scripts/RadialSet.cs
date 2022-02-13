@@ -27,7 +27,7 @@ public class RadialSet : MonoBehaviour {
             float cos = Mathf.Cos(rad);
             // r:半径
             Vector3 pos = this.gameObject.transform.position + new Vector3(cos * r, sin * r, 0);
-            Vector3 scale = this.gameObject.transform.localScale + new Vector3(0.02f, 0.05f, 0);
+            Vector3 scale = this.gameObject.transform.localScale + new Vector3(0.001f, 0.0025f, 0);
             GameObject t = Instantiate(bullet) as GameObject;
             t.transform.position = pos;
             t.transform.localScale += scale;
