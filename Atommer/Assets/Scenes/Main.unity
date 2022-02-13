@@ -922,7 +922,7 @@ GameObject:
   - component: {fileID: 140482359}
   m_Layer: 0
   m_Name: Boss1
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69444,26 +69444,26 @@ PrefabInstance:
     - target: {fileID: 6882686672567413944, guid: f84539b04240dc64cad7f61ef53a0ab4, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 8d16eaad0c563c24cb1567f0561b68c4, type: 3}
     - target: {fileID: 6882686672567413944, guid: f84539b04240dc64cad7f61ef53a0ab4, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 6882686672567413951, guid: f84539b04240dc64cad7f61ef53a0ab4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 13.9175
+      value: 0.5336675
       objectReference: {fileID: 0}
     - target: {fileID: 6882686672567413951, guid: f84539b04240dc64cad7f61ef53a0ab4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 9.677814
+      value: 0.6349135
       objectReference: {fileID: 0}
     - target: {fileID: 6882686672567413951, guid: f84539b04240dc64cad7f61ef53a0ab4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 6882686672567413951, guid: f84539b04240dc64cad7f61ef53a0ab4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 6882686673892164785, guid: f84539b04240dc64cad7f61ef53a0ab4, type: 3}
       propertyPath: m_Name

@@ -36,6 +36,56 @@ public class Health : MonoBehaviour
 
     void Update()
     {
+        for (int i = 0; i < (health / 0.5f); i++)
+        {
+            if ((health / 0.5f) % 2 == 0)
+            {
+                // healthは整数
+                switch (health)
+                {
+                    case 0:
+                        heart1.sprite = empty;
+                        heart2.sprite = empty;
+                        heart3.sprite = empty;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 1:
+                        heart2.sprite = empty;
+                        heart3.sprite = empty;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 2:
+                        heart3.sprite = empty;
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 3:
+                        heart4.sprite = empty;
+                        heart5.sprite = empty;
+                        break;
+                    case 4:
+                        heart5.sprite = empty;
+                        break;
+                    case 5:
+                        heart1.sprite = full;
+                        heart2.sprite = full;
+                        heart3.sprite = full;
+                        heart4.sprite = full;
+                        heart5.sprite = full;
+                        break;
+                }
+            }
+            else
+            {
+                // healthは小数(0.5が含まれる)
+                for (int i = 0; i < (health / 0.5f); i++)
+                {
+                    
+                }
+            }
+        }
         if (health <= 0)
         {
             Invoke("Kill", 0.5f);
@@ -51,41 +101,6 @@ public class Health : MonoBehaviour
         if (collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Spike")
         {
             health --;
-            switch (health)
-            {
-                case 0:
-                    heart1.sprite = empty;
-                    heart2.sprite = empty;
-                    heart3.sprite = empty;
-                    heart4.sprite = empty;
-                    heart5.sprite = empty;
-                    break;
-                case 1:
-                    heart2.sprite = empty;
-                    heart3.sprite = empty;
-                    heart4.sprite = empty;
-                    heart5.sprite = empty;
-                    break;
-                case 2:
-                    heart3.sprite = empty;
-                    heart4.sprite = empty;
-                    heart5.sprite = empty;
-                    break;
-                case 3:
-                    heart4.sprite = empty;
-                    heart5.sprite = empty;
-                    break;
-                case 4:
-                    heart5.sprite = empty;
-                    break;
-                case 5:
-                    heart1.sprite = full;
-                    heart2.sprite = full;
-                    heart3.sprite = full;
-                    heart4.sprite = full;
-                    heart5.sprite = full;
-                    break;
-            }
             if (collision.gameObject.tag == "Spike")
             {
                 current_time = 0f;
@@ -103,6 +118,15 @@ public class Health : MonoBehaviour
         if (collision.gameObject.tag == "Boss")
         {
             health -= 0.5f;
+            current_time = 0f;
+            isSpike = true;
+            coll = collision.gameObject.GetComponent<Collider2D>();
+            coll.enabled = false;
+            spriteRenderer.enabled = false;
+            isActive = false;
+            Blink();
+
+            Invoke("ActiveColl", 5f);
         }
     }
 
@@ -149,7 +173,7 @@ public class Health : MonoBehaviour
 
     void Kill()
     {
-        this.gameObject.transform.position = respawnPoint1.transform.position;
+        // this.gameObject.transform.position = respawnPoint1.transform.position;
         health = 5;
         heart1.sprite = full;
         heart2.sprite = full;
