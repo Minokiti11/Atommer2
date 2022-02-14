@@ -20,9 +20,11 @@ public class Boss1 : MonoBehaviour
     public HealthBar healthBar;
     public CameraMovement cameraMovement;
     public RadialSet radialSet;
+
     [Header("GameObjects")]
     public GameObject fireBall;
     public GameObject player;
+    
     [Header("Int")]
     public int maxHealth = 100;
     public int currentHealth;
