@@ -112,6 +112,11 @@ public class Boss1 : MonoBehaviour
 
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+    }
+
     void LaunchFireBall(Vector3 offset, float speed)
     {
         if (direction == 1)
@@ -162,22 +167,16 @@ public class Boss1 : MonoBehaviour
     void OrbitMove()
     {
         // 周回移動
-        Debug.Log($"Going to path1({paths[1]}).");
         transform.DOMove(paths[1], 1f).OnComplete(() =>
         {
-            Debug.Log($"Going to path2({paths[2]}).");
             transform.DOMove(paths[2], 1f).OnComplete(() =>
             {
-                Debug.Log($"Going to path3({paths[3]}).");
                 transform.DOMove(paths[3], 1f).OnComplete(() =>
                 {
-                    Debug.Log($"Going to path4({paths[4]}).");
                     transform.DOMove(paths[4], 1f).OnComplete(() =>
                     {
-                        Debug.Log($"Going to path5({paths[5]}).");
                         transform.DOMove(paths[5], 1f).OnComplete(() =>
                         {
-                            Debug.Log($"Going to path0({paths[0]}).");
                             transform.DOMove(paths[0], 1f).OnComplete(() =>
                             {
                                 Debug.Log("Finished.");
