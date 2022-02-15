@@ -114,7 +114,10 @@ public class Boss1 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.tag == "Oxygen")
+        {
+            TakeDamage(5);
+        }
     }
 
     void LaunchFireBall(Vector3 offset, float speed)
