@@ -70,7 +70,7 @@ public class Boss1 : MonoBehaviour
 
     void Update()
     {
-        if (isFinishedAttack)
+        if (isFinishedAttack && cameraMovement.now_room == room_in)
         {
             isFinishedAttack = false;
             // シード値を初期化
@@ -90,23 +90,20 @@ public class Boss1 : MonoBehaviour
                     break;
             }
 
-            if (cameraMovement.now_room == room_in)
+            switch (attackPattern)
             {
-                switch (attackPattern)
-                {
-                    case AttackPattern.RadialLaunch:
-                        // 放射線状に発射
-                        RadialLaunch();
-                        break;
-                    case AttackPattern.OrbitMove:
-                        // 周回移動
-                        OrbitMove();
-                        break;
-                    case AttackPattern.RapidFire:
-                        // 連射
-                        RapidFire(rapid_n);
-                        break;
-                }
+                case AttackPattern.RadialLaunch:
+                    // 放射線状に発射
+                    RadialLaunch();
+                    break;
+                case AttackPattern.OrbitMove:
+                    // 周回移動
+                    OrbitMove();
+                    break;
+                case AttackPattern.RapidFire:
+                    // 連射
+                    RapidFire(rapid_n);
+                    break;
             }
         }
 
@@ -182,7 +179,6 @@ public class Boss1 : MonoBehaviour
                         {
                             transform.DOMove(paths[0], 1f).OnComplete(() =>
                             {
-                                Debug.Log("Finished.");
                                 Invoke("FinishAttack", 0.5f);
                             });
                         });

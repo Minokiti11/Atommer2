@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Spring : MonoBehaviour
 {
+    public float power;
+    private Animator anim;
     void Start()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        anim = GetComponent<Animator>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(0,10,0));
+            anim.SetBool("springUp", true);
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            rb.AddForce(new Vector3(0,100,0) * power);
         }
     }
 }
