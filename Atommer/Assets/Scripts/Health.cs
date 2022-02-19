@@ -204,7 +204,8 @@ public class Health : MonoBehaviour
         if (collision.gameObject.tag == "DeathZone")
         {
             health -= 5f;
-            
+            DeathZone deathZone = collision.gameObject.GetComponent<DeathZone>();
+            this.gameObject.transform.position = deathZone.respawnPoint;
         }
     }
 
