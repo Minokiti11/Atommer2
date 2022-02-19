@@ -6,9 +6,23 @@ public class Spring : MonoBehaviour
 {
     public float power;
     private Animator anim;
+    private SpriteRenderer spriteRenderer;
+    public Sprite springIdle;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
+    {
+        if (spriteRenderer.sprite == springIdle)
+        {
+            if (anim.GetBool("springDown"))
+                anim.SetBool("springDown", false);
+                anim.SetBool("springIdle", true);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -18,6 +32,14 @@ public class Spring : MonoBehaviour
             anim.SetBool("springUp", true);
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             rb.AddForce(new Vector3(0,100,0) * power);
+            Invoke("SpringDown", 1f);
         }
+    }
+
+    void SpringDown()
+    {
+        anim.SetBool("springUp", false);
+        anim.SetBool("springDown", true);
+        
     }
 }
