@@ -19,6 +19,7 @@ TagManager:
   - Spike
   - Enemy
   - Boss
+  - DeathZone
   layers:
   - Default
   - TransparentFX
