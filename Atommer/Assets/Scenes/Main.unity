@@ -3443,7 +3443,7 @@ MonoBehaviour:
   slideSpeed: 1
   wallJumpLerp: 5
   dashSpeed: 40
-  hangTime: 0.2
+  hangTime: 0.13
   hangCounter: 0
   canMove: 1
   wallGrab: 0
