@@ -21,6 +21,8 @@ public class Movement : MonoBehaviour
     public float dashSpeed = 20;
     public float hangTime;
     public float hangCounter;
+    public float jumpBufferLength = 0.5f;
+    private float jumpBufferCounter;
 
     [Space]
     [Header("Booleans")]
@@ -124,6 +126,7 @@ public class Movement : MonoBehaviour
             
         }
 
+        // manage hangTime
         if (coll.onGround)
         {
             // hangCounterにhangTimeを代入
@@ -135,7 +138,17 @@ public class Movement : MonoBehaviour
             hangCounter -= Time.deltaTime;
         }
 
-        if (hangCounter > 0 && !isDashing)
+        // manage jumpBuffer
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpBufferCounter = jumpBufferLength;
+        }
+        else
+        {
+            jumpBufferCounter -= Time.deltaTime;
+        }
+
+        if (coll.onGround && !isDashing)
         {
             wallJumped = false;
             GetComponent<BetterJumping>().enabled = true;
@@ -170,7 +183,7 @@ public class Movement : MonoBehaviour
             wallSlide = false;
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (jumpBufferCounter >= 0)
         {
             anim.SetTrigger("jump");
 
@@ -179,6 +192,7 @@ public class Movement : MonoBehaviour
                 Jump(Vector2.up, false);
             if (coll.onWall && !(hangCounter > 0))
                 WallJump();
+            
         }
 
         if (Input.GetButtonDown("Fire1") && !hasDashed)
@@ -334,6 +348,7 @@ public class Movement : MonoBehaviour
         rb.velocity += dir * jumpForce;
 
         particle.Play();
+        jumpBufferCounter = 0;
     }
 
     IEnumerator DisableMovement(float time)

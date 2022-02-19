@@ -3445,6 +3445,7 @@ MonoBehaviour:
   dashSpeed: 40
   hangTime: 0.13
   hangCounter: 0
+  jumpBufferLength: 0.1
   canMove: 1
   wallGrab: 0
   wallJumped: 0
