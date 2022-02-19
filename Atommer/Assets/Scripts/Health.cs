@@ -200,6 +200,12 @@ public class Health : MonoBehaviour
 
             Invoke("ActiveColl", 3f);
         }
+
+        if (collision.gameObject.tag == "DeathZone")
+        {
+            health -= 5f;
+            
+        }
     }
 
     //スプライトを点滅

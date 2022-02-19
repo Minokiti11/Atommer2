@@ -17,11 +17,9 @@ public class Spring : MonoBehaviour
 
     void Update()
     {
-        if (spriteRenderer.sprite == springIdle)
+        if (anim.GetBool("springDown"))
         {
-            if (anim.GetBool("springDown"))
-                anim.SetBool("springDown", false);
-                anim.SetBool("springIdle", true);
+            Invoke("SpringIdle", 0.2f);
         }
     }
 
@@ -40,6 +38,11 @@ public class Spring : MonoBehaviour
     {
         anim.SetBool("springUp", false);
         anim.SetBool("springDown", true);
-        
+    }
+
+    void SpringIdle()
+    {
+        anim.SetBool("springDown", false);
+        anim.SetBool("springIdle", true);
     }
 }
