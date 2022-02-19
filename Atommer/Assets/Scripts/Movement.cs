@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
     public float hangTime;
-    private float hangCounter;
+    public float hangCounter;
 
     [Space]
     [Header("Booleans")]
@@ -135,7 +135,6 @@ public class Movement : MonoBehaviour
             hangCounter -= Time.deltaTime;
         }
 
-        // 地面から離れてもhangTime秒まではジャンプOKにする
         if (hangCounter > 0 && !isDashing)
         {
             wallJumped = false;
@@ -175,9 +174,10 @@ public class Movement : MonoBehaviour
         {
             anim.SetTrigger("jump");
 
-            if (coll.onGround)
+            // 地面から離れてもhangTime秒まではジャンプできる
+            if (hangCounter > 0)
                 Jump(Vector2.up, false);
-            if (coll.onWall && !coll.onGround)
+            if (coll.onWall && !(hangCounter > 0))
                 WallJump();
         }
 
