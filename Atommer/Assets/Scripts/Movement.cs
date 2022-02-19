@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
     public float slideSpeed = 5;
     public float wallJumpLerp = 10;
     public float dashSpeed = 20;
+    public float hangTime;
+    private float hangCounter;
 
     [Space]
     [Header("Booleans")]
@@ -122,7 +124,19 @@ public class Movement : MonoBehaviour
             
         }
 
-        if (coll.onGround && !isDashing)
+        if (coll.onGround)
+        {
+            // hangCounterにhangTimeを代入
+            hangCounter = hangTime;
+        }
+        else
+        {
+            //hangCounterから秒数を引いていく
+            hangCounter -= Time.deltaTime;
+        }
+
+        // 地面から離れてもhangTime秒まではジャンプOKにする
+        if (hangCounter > 0 && !isDashing)
         {
             wallJumped = false;
             GetComponent<BetterJumping>().enabled = true;
