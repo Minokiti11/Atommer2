@@ -27,10 +27,11 @@ public class Spring : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            anim.SetBool("springUp", true);
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            anim.SetBool("springUp", true);
             rb.AddForce(new Vector3(0,100,0) * power);
-            Invoke("SpringDown", 0.8f);
+            Invoke("SpringDown", 0.5f);
+
         }
     }
 
