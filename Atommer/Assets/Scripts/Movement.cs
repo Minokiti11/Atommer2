@@ -230,6 +230,22 @@ public class Movement : MonoBehaviour
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "MovingPlatform")
+        {
+            transform.parent = collision.gameObject.transform;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "MovingPlatform")
+        {
+            this.gameObject.transform.parent = null;
+        }
+    }
+
     void GroundTouch()
     {
         hasDashed = false;

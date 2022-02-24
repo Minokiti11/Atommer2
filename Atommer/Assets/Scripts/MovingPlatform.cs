@@ -7,9 +7,11 @@ public class MovingPlatform : MonoBehaviour
 {
     public Vector3 point1;
     public Vector3 point2;
-    void Start()
+
+    void Awake()
     {
-        
+        DOTween.Init(); // コレないと効かない
+        DOTween.defaultEaseType = Ease.Linear;
     }
 
     void Update()
@@ -17,7 +19,6 @@ public class MovingPlatform : MonoBehaviour
         if (transform.position == point1)
         {
             Invoke("MovePos2", 1f);
-
         }
         else if (transform.position == point2)
         {

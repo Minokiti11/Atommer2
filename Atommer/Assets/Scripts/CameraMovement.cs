@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +13,7 @@ public class CameraMovement : MonoBehaviour
     private bool follow;
 
     public string now_room;
+    public string[] followRoom;
 
     public Vector3 enterRoomPos;
 
@@ -38,7 +41,7 @@ public class CameraMovement : MonoBehaviour
             Invoke("CheckMyPos", 0.2f);
             now_room = collision.gameObject.name;
 
-            if (collision.gameObject.name == "Room3" || collision.gameObject.name == "Room10" || collision.gameObject.name == "Room12" || collision.gameObject.name == "Room17" || collision.gameObject.name == "Room20")
+            if (followRoom.Contains(now_room))
             {
                 // カメラに追従させる
                 follow = true;
