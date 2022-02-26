@@ -232,7 +232,7 @@ public class Movement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "MovingPlatform")
+        if (collision.gameObject.name == "MovingPlatform" && rb.velocity.x == 0f)
         {
             transform.parent = collision.gameObject.transform;
         }
